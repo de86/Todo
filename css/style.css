@@ -1,0 +1,44 @@
+.site-width {
+  width: 600px;
+  margin: 0 auto;
+  padding: 1em; }
+
+header {
+  background-color: #66c;
+  color: #fafafa; }
+
+body {
+  background-color: #d5d5d5; }
+
+.input-container,
+.todo-list {
+  background-color: #fafafa; }
+
+.todo-details {
+  width: 100%; }
+
+.todo-item {
+  margin-bottom: 1em; }
+
+.input {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  border: none;
+  padding: 1em; }
+
+.button, .todo-add, .todo-edit, .todo-delete {
+  padding: 1em; }
+
+.todo-add {
+  background-color: #6c6; }
+
+.todo-edit {
+  background-color: #dd6; }
+
+.todo-delete {
+  background-color: #c66; }
+
+/*# sourceMappingURL=style.css.map */

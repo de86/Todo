@@ -1,0 +1,46 @@
+$bgColor : #d5d5d5
+$primaryColor : #66c
+$secondaryColor : #fafafa
+
+@import _layout
+@import _mixins
+
+header
+	background-color : $primaryColor
+	color : $secondaryColor
+
+body
+	background-color : $bgColor
+
+.input-container,
+.todo-list
+	background-color : $secondaryColor
+
+.todo-details
+	width : 100%
+
+.todo-item
+	margin-bottom : 1em
+
+.input
+	+box-sizing(border-box)
+	display : block
+	width : 100%
+	border : none
+	padding : 1em
+
+.button
+	padding : 1em
+	
+
+.todo-add
+	@extend .button
+	background-color : #6c6
+
+.todo-edit
+	@extend .button
+	background-color : #dd6
+
+.todo-delete
+	@extend .button
+	background-color : #c66
