@@ -1,44 +1,74 @@
 .site-width {
   width: 600px;
-  margin: 0 auto;
-  padding: 1em; }
+  margin: 0 auto; }
 
-header {
-  background-color: #66c;
-  color: #fafafa; }
+.clear:after {
+  content: "";
+  display: table;
+  clear: both; }
 
 body {
-  background-color: #d5d5d5; }
+  background-color: #f8f8f8; }
+
+header {
+  background-color: #ec3;
+  color: #f8f8f8; }
+
+.header-content {
+  padding: 1em; }
 
 .input-container,
 .todo-list {
-  background-color: #fafafa; }
+  background-color: #ec3;
+  padding: 1em 1em 0 1em; }
+
+.input-container {
+  margin-top: 1em; }
 
 .todo-details {
   width: 100%; }
 
 .todo-item {
-  margin-bottom: 1em; }
+  padding-bottom: 1em; }
 
-.input {
+.input,
+.button,
+.todo-add,
+.todo-edit,
+.todo-delete {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   display: block;
   width: 100%;
   border: none;
-  padding: 1em; }
+  padding: 1em;
+  background-color: #f8f8f8; }
+
+.item-title {
+  border-bottom: 8px solid #ec3; }
 
 .button, .todo-add, .todo-edit, .todo-delete {
+  text-align: center;
   padding: 1em; }
 
 .todo-add {
-  background-color: #6c6; }
+  background-color: #8d8; }
 
 .todo-edit {
-  background-color: #dd6; }
+  background-color: #ddd; }
 
 .todo-delete {
-  background-color: #c66; }
+  background-color: #d88; }
+
+.todo-details .input {
+  width: 66%;
+  float: left; }
+.todo-details .button, .todo-details .todo-add, .todo-details .todo-edit, .todo-details .todo-delete {
+  width: 17%;
+  float: left; }
+
+.editing {
+  background-color: #fff; }
 
 /*# sourceMappingURL=style.css.map */

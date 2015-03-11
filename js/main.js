@@ -5,22 +5,22 @@ $(document).ready(function(){
 	// Add Todo Item to List
 	$('#todo-add').click(function(){
 
-		if($('#item-title').val() === ''){
+		if($('#item-title').val() === '' || $('#item-title').val() === 'What do you need to do?' || $('#item-title').val() === 'Please enter a Todo Item'){
 			$('#item-title').val('Please enter a Todo Item');
 			return;
 		};
-
+ 
 		var $title = $('<input class="input" type="text" disabled></input>').val(($('#item-title').val()));
-		var $notes = $('<textarea id="item-notes" class="input" cols="20" rows="5" disabled></textarea>').html($('#item-notes').val()).css('display', 'none');		
-		var $todoDetails = $('<div class="todo-details"></div>').append($title, $notes)
+		var $notes = $('<textarea id="item-notes" class="input" cols="20" rows="5" resizeable="false" disabled></textarea>').val($('#item-notes').val()).css('display', 'none');		
 		var $editButton = $('<div class="todo-edit">Edit</div>');
 		var $deleteButton = $('<div class="todo-delete">Delete</div>');
-		var $todoItem = $('<div class="todo-item"></div>').append($todoDetails, $editButton, $deleteButton);
+		var $todoDetails = $('<div class="todo-details"></div>').append($title, $editButton, $deleteButton)
+		var $todoItem = $('<div class="todo-item clear"></div>').append($todoDetails, $notes);
 
 		$('#todo-list').append($todoItem);
 
 		$('#item-title').val('What do you need to do?');
-		$('#item-notes').html('Notes:');
+		$('#item-notes').val('Notes:');
 	});
 
 	// Clear text on focus
@@ -50,11 +50,14 @@ $(document).ready(function(){
 	function enableInput($buttonClicked, isDisabled){
 		if(isDisabled){
 			$buttonClicked.html('Save');
+			$buttonClicked.css({backgroundColor : '#8d8'});
 		} else {
 			$buttonClicked.html('Edit');
+			$buttonClicked.css({backgroundColor : '#ddd'});
 		};
-		$buttonClicked.closest($('.todo-item')).find('input').prop('disabled', !isDisabled);
-		$buttonClicked.closest($('.todo-item')).find('textarea').prop('disabled', !isDisabled);
+
+		$buttonClicked.closest($('.todo-item')).find('input').prop('disabled', !isDisabled).toggleClass('editing');
+		$buttonClicked.closest($('.todo-item')).find('textarea').prop('disabled', !isDisabled).toggleClass('editing');
 		isEditing = isDisabled;
 	};
 
