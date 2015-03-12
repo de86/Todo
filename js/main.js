@@ -6,17 +6,18 @@ $(document).ready(function(){
 	if(localStorage.length > 0){
 		loadList();
 	}
+	
+	/*localStorage.clear()*/
 
-
-	// create and append list item to list
+	// Create and append list item to list
 	function addItem(title, notes){
 		var $title = $('<input class="input" type="text" disabled></input>').val(title);
 		var $notes = $('<textarea id="item-notes" class="input" cols="20" rows="5" resizeable="false" disabled></textarea>').val(notes).css('display', 'none');		
 		var $editButton = $('<div class="todo-edit">Edit</div>');
 		var $deleteButton = $('<div class="todo-delete">Delete</div>');
 		var $todoDetails = $('<div class="todo-details"></div>').append($title, $editButton, $deleteButton)
-		var $todoItem = $('<div class="todo-item clear"></div>').append($todoDetails, $notes);
-		$('#todo-list').append($todoItem);
+		var $todoItem = $('<div class="todo-item clear" data-key="' + itemKey + '"></div>').append($todoDetails, $notes);
+		$('#todo-list').prepend($todoItem);
 		saveItem(title, notes);
 	};
 
@@ -60,7 +61,9 @@ $(document).ready(function(){
 
 	// Remove Todo Item
 	$(document.body).on('click', '.todo-delete', function(){
+		deleteItem($(this).closest('.todo-item').data('key'));
 		$(this).closest($('.todo-item')).remove();
+		console.log(localStorage);
 	});
 
 
@@ -82,26 +85,40 @@ $(document).ready(function(){
 
 	// Loads current list from storage and displays list in the DOM
 	function loadList(){
-
+		for (var item in localStorage){
+			var obj = JSON.parse(localStorage[item[0]]);
+			console.log(item, obj['title'], obj['notes']);
+			addItem(obj['title'], obj['notes'], item);
+		};
 	};
 
 
 	// Saves current list to local storage
 	function saveItem(title, notes){
-		itemKey++;
+
 		var item = {
-			'title ': title,
-			'notes': notes
+			'title' : title,
+			'notes' : notes
 		};
 
 		localStorage.setItem(itemKey, JSON.stringify(item));
-		console.log(localStorage.getItem(itemKey));
+		console.log(localStorage);
+
+		itemKey++;
 	};
+
+
+	// Delete Item from list
+	function deleteItem(key){
+		localStorage.removeItem(key);
+	}
 
 
 	// Clear List from local storage
 	function clearList(){
-		Storage.clear();
+		localStorage.clear();
+		itemKey = 0;
+		console.log(localStorage);
 	};
 
 

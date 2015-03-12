@@ -46,7 +46,7 @@ header {
   background-color: #f8f8f8; }
 
 .item-title {
-  border-bottom: 8px solid #ec3; }
+  margin-bottom: 1em; }
 
 .button, .todo-add, .todo-edit, .todo-delete {
   text-align: center;
